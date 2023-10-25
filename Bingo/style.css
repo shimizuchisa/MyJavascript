@@ -1,0 +1,16 @@
+main {
+  width: 270px;
+}
+
+th, td {
+  width: 50px;
+  height: 50px;
+  background-color: pink;
+  text-align: center;
+  line-height: 50px;
+}
+/*.col {*/
+/*  display: flex;*/
+/*  gap: 5px;*/
+/*  margin-bottom: 5px;*/
+/*}*/

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Pass Generator</title>
+  </head>
+  <body>
+    <main>
+      <p id="result">example</p>
+      <button id="btn">パスワードを生成</button>
+      <fieldset>
+        <legend>オプション</legend>
+        <label for="">
+          長さ（<span id="password-length">8</span>）
+          <input type="range" id="slider" min="8" max="16" value="8">
+        </label>
+        <label for="">
+          数字
+          <input type="checkbox" id="numbers-checkbox">
+        </label>
+        <label for="">
+          記号
+          <input type="checkbox" id="signs-checkbox">
+        </label>
+      </fieldset>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

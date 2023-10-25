@@ -1,0 +1,39 @@
+body {
+  margin: 0 0 0 0;
+}
+
+main {
+  width: 256px;
+  margin: 0 auto;
+  background-color: pink;
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+button {
+  all: unset;
+  width: 124px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.thumbnail {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.active {
+  opacity: 1;
+}

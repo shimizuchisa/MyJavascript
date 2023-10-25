@@ -1,0 +1,35 @@
+main {
+  width: 400px;
+  margin: 0 auto;
+}
+
+textarea {
+  width: 400px;
+}
+
+.container {
+  text-align: right;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  all: unset;
+  width: 100px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: grey;
+  cursor: pointer;
+}
+
+span {
+  opacity: 0;
+  transition: oppacity 400ms;
+}
+
+.appear {
+  opacity: 1;
+}
