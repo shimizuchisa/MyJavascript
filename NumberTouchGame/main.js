@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
 {
   class Panel {
-    constructor() {
+    constructor(game) {
+      this.game = game;
       this.el = document.createElement('li');
       this.el.classList.add('pressed');
       this.el.addEventListener('click', () => {
@@ -18,23 +19,23 @@
     }
 
     check() {
-      if(currentNum === parseInt(this.el.textContent, 10)){
+      if(this.game.getCurrentNum() === parseInt(this.el.textContent, 10)){
         this.el.classList.add('pressed');
-        currentNum++;
+        this.game.addCurrentNum(); //currentNumm++;
 
-        if(currentNum === 4) {
-          clearTimeout(timeoutID);
-          currentNum = 0;
+        if(this.game.getCurrentNum() === this.game.getLevel() ** 2) {
+          clearTimeout(this.game.getTimeoutID());
         }
       }
     }
   }
 
   class Board {
-    constructor() {
+    constructor(game) {
+      this.game = game;
       this.panels = [];
-      for(let i = 0; i < 4; i++) {
-        this.panels.push(new Panel());
+      for(let i = 0; i < this.game.getLevel() ** 2; i++) {
+        this.panels.push(new Panel(this.game));
       }
       this.setup();
     }
@@ -47,7 +48,11 @@
     }
 
     activate() {
-      const nums = [0, 1, 2, 3];
+      const nums = [];
+      for(let i = 0; i < this.game.getLevel() ** 2; i++) {
+        nums.push(i);
+      }
+
       this.panels.forEach(panel => {
         const num =nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
         panel.activate(num);
@@ -57,8 +62,9 @@
 
 
   class Game {
-    constructor() {
-      this.board = new Board();
+    constructor(level) {
+      this.level = level;
+      this.board = new Board(this);
       this.currentNum = undefined;
       this.startTime = undefined;
       this.timeoutID = undefined;
@@ -67,6 +73,14 @@
       btn.addEventListener('click', () => {
           this.start();
       });
+      this.setup();
+    }
+
+    setup() {
+      const PANEL_WIDTH = 50;
+      const BOARD_PADING = 10;
+      const container = document.getElementById('container');
+      container.style.width = PANEL_WIDTH * this.level + BOARD_PADING * 2 + 'px';
     }
 
     start() {
@@ -87,5 +101,23 @@
         this.runTimer();
       }, 10);
     }
+
+    addCurrentNum() {
+      return this.currentNum++;
+    }
+
+    getCurrentNum() {
+      return this.currentNum;
+    }
+
+    getTimeoutID() {
+      return this.timeoutID;
+    }
+
+    getLevel() {
+      return this.level;
+    }
   }
+
+  new Game(3);
 }
